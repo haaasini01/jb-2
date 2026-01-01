@@ -33,7 +33,8 @@ function Footer() {
                 <p>Hyderabad, Telangana</p>
               </div>
 
-              <p>+91 9XXXXXXXXX</p>
+              <p>+91 9515310196</p>
+              <p>+91 9515496226</p>
               <p>jayessbauences@gmail.com</p>
             </div>
 
@@ -63,7 +64,7 @@ function Footer() {
 
               {/* WhatsApp */}
               <a
-                href="https://wa.me/919XXXXXXXXX"
+                href="https://wa.me/919515496226"
                 target="_blank"
                 rel="noreferrer"
                 className="w-9 h-9 flex items-center justify-center rounded-md bg-[#1c1c1c] hover:bg-[#D6B643] transition"
