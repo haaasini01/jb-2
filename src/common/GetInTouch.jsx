@@ -32,12 +32,12 @@ function GetInTouch() {
   }, [location.pathname]); // 👈 reattach observer per route
 
   return (
-    <section ref={sectionRef} className="bg-[#1c1c1c] py-14">
+    <section ref={sectionRef} className="bg-[#1c1c1c] py-10 md:py-14">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 lg:gap-10 items-center">
 
           {/* LEFT : Image */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 flex justify-center">
             <div
               className={`
                 relative w-full max-w-xl aspect-[20/9] overflow-hidden
@@ -62,12 +62,12 @@ function GetInTouch() {
               ${visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-6"}
             `}
           >
-            <h2 className="text-xl md:text-2xl font-extrabold tracking-tight leading-snug mb-4">
-              We’ll bring your vision to life —{" "}
+            <h2 className="text-lg sm:text-xl md:text-2xl font-extrabold tracking-tight leading-snug mb-3 md:mb-4">
+              We'll bring your vision to life —{" "}
               <span className="text-[#D6B643]">connect with us!</span>
             </h2>
 
-            <p className="text-[#d3d0cb]/80 text-sm leading-relaxed mb-6">
+            <p className="text-[#d3d0cb]/80 text-xs sm:text-sm leading-relaxed mb-4 md:mb-6">
               Your space may begin with many ideas. We refine and translate them into well-planned interiors that feel thoughtful, practical, and timeless.
             </p>
 

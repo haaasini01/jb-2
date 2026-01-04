@@ -22,9 +22,9 @@ function Form() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-[#d3d0cb] py-16">
+    <section ref={sectionRef} className="bg-[#d3d0cb] py-12 md:py-16">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-20 items-center">
 
           {/* LEFT : IMAGE */}
           <div
@@ -34,7 +34,7 @@ function Form() {
               ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
             `}
           >
-            <div className="relative w-full max-w-lg aspect-[4.5/5] overflow-hidden">
+            <div className="relative w-full max-w-lg mx-auto aspect-[4.5/5] overflow-hidden">
               <img
                 src={img1}
                 alt="Contact Jayess Bauences"
@@ -52,15 +52,17 @@ function Form() {
             `}
           >
             {/* Heading */}
-            <span className="block text-xs tracking-widest text-gray-600 mb-3">
-              GET IN TOUCH
-            </span>
+            <div className="text-center lg:text-left">
+              <span className="block text-xs tracking-widest text-gray-600 mb-3">
+                GET IN TOUCH
+              </span>
 
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#1c1c1c] mb-8">
-              Connect with us!
-            </h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1c1c1c] mb-6 md:mb-8">
+                Connect with us!
+              </h2>
+            </div>
 
-            <form className="space-y-6 max-w-md">
+            <form className="space-y-6 max-w-md mx-auto">
 
               {/* Name */}
               <div>

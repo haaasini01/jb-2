@@ -38,8 +38,6 @@ function Why2() {
         "
     >
 
-
-
       {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -67,10 +65,11 @@ function Why2() {
                 text-[#d3d0cb]
                 lg:col-span-7
                 transition-opacity duration-700
+                py-20 px-4
                 ${visible ? "animate-fade-left" : "opacity-0"}
               `}
             >
-              <h2 className="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
                 Designing Spaces <br />
                 <span className="text-[#D6B643]">Built to Feel Personal.</span>
               </h2>
@@ -97,7 +96,7 @@ function Why2() {
             {/* RIGHT IMAGE */}
             <div
               className={`
-                lg:col-span-5
+                hidden lg:block lg:col-span-5
                 transition-opacity duration-700
                 ${visible ? "animate-fade-right" : "opacity-0"}
               `}
@@ -107,7 +106,6 @@ function Why2() {
                   mx-auto
                   p-4
                   md:p-6
-                  xl:p-8
                 "
               >
                 <div

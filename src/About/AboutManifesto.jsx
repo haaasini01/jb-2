@@ -23,12 +23,12 @@ function AboutManifesto() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-[#d3d0cb] py-28">
+    <section ref={sectionRef} className="bg-[#d3d0cb] py-12 md:py-20 lg:py-28">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-24 items-start">
 
           {/* LEFT : IMAGE COMPOSITION */}
-          <div className="lg:col-span-5 relative">
+          <div className="lg:col-span-5 relative mb-8 lg:mb-0">
 
             {/* Back image (NOW WITH BORDER) */}
             <div
@@ -74,21 +74,21 @@ function AboutManifesto() {
               ${visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"}
             `}
           >
-            <span className="block text-xs tracking-widest text-gray-500 mb-3">
+            <span className="block text-xs tracking-widest text-gray-500 mt-12 mb-3">
               ABOUT JAYESS BAUENCES
             </span>
 
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#1c1c1c] leading-tight mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1c1c1c] leading-tight mb-4 md:mb-6">
               We create interiors that
               <br />
               are thoughtful and built to last
             </h2>
 
-            <p className="text-gray-600 text-base leading-relaxed mb-6 max-w-2xl">
+            <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-4 md:mb-6 max-w-2xl">
               As part of <span className="font-semibold">Jayess Builders</span>, Jayess Bauences draws from strong architectural principles to shape its interior design approach. Each space is planned to balance aesthetics with everyday usability, resulting in calm, well-composed environments.
             </p>
 
-            <p className="text-gray-600 text-base leading-relaxed mb-8 max-w-2xl">
+            <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 md:mb-8 max-w-2xl">
               Working across both residential and commercial projects, we shape concepts into carefully detailed interiors that remain relevant over time, rather than following short-lived trends.
             </p>
 

@@ -29,7 +29,7 @@ function AboutIntro() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-[#1c1c1c] py-28 overflow-hidden"
+      className="relative bg-[#1c1c1c] py-12 md:py-20 lg:py-28 overflow-hidden"
     >
       {/* BACKGROUND IMAGE */}
       <div
@@ -45,19 +45,19 @@ function AboutIntro() {
           {/* HEADING */}
           <div
             className={`
-              mb-20
+              mb-12 md:mb-16 lg:mb-20
               transition-all duration-700 ease-out
               ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
             `}
           >
-            <div className="w-12 h-[2px] bg-[#D6B643] mb-6" />
-            <h2 className="text-4xl md:text-5xl xl:text-[56px] font-normal tracking-tight text-[#d3d0cb]">
+            <div className="w-12 h-[2px] bg-[#D6B643] mb-4 md:mb-6" />
+            <h2 className="text-3xl sm:text-4xl md:text-5xl xl:text-[56px] font-normal tracking-tight text-[#d3d0cb]">
               Discover our <span className="text-[#D6B643] font-bold">journey</span>
             </h2>
           </div>
 
           {/* GRID */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-20 items-start">
 
             {/* LEFT IMAGE + TEXT */}
             <div
@@ -85,7 +85,7 @@ function AboutIntro() {
             {/* CENTER MICRO COPY */}
             <div
               className={`
-                lg:col-span-3 pt-24
+                lg:col-span-3 pt-8 md:pt-12 lg:pt-24
                 transition-all duration-700 delay-200 ease-out
                 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
               `}
@@ -94,7 +94,7 @@ function AboutIntro() {
                 Our Foundation
               </p>
 
-              <p className="text-[15px] md:text-base text-[#d3d0cb]/80 leading-relaxed">
+              <p className="text-sm md:text-[15px] lg:text-base text-[#d3d0cb]/80 leading-relaxed">
                 Rooted in architectural discipline and guided by years of
                 experience, our work balances function, material honesty, and
                 timeless aesthetics.

@@ -23,10 +23,10 @@ function VisionMission() {
   return (
     <section
       ref={sectionRef}
-      className="bg-[#f4f3ef] py-20"
+      className="bg-[#f4f3ef] py-12 md:py-16 lg:py-20"
     >
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-20">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 lg:gap-20">
 
           {/* OUR VISION */}
           <div
@@ -36,13 +36,13 @@ function VisionMission() {
               ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
             `}
           >
-            <h3 className="text-3xl md:text-4xl font-extrabold text-[#1c1c1c] mb-6">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1c1c1c] mb-4 md:mb-6">
               Our Vision
             </h3>
 
-            <div className="w-12 h-[2px] bg-[#D6B643] mb-6" />
+            <div className="w-12 h-[2px] bg-[#D6B643] mb-4 md:mb-6" />
 
-            <p className="text-gray-600 text-base leading-relaxed max-w-xl">
+            <p className="text-gray-600 text-sm sm:text-base leading-relaxed max-w-xl">
               At Jayess Bauences, we envision interiors that enhance everyday living in subtle, meaningful ways. Our goal is to create spaces that are harmonious, practical, and personal—where design and function come together naturally.
             </p>
           </div>
@@ -55,13 +55,13 @@ function VisionMission() {
               ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
             `}
           >
-            <h3 className="text-3xl md:text-4xl font-extrabold text-[#1c1c1c] mb-6">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#1c1c1c] mb-4 md:mb-6">
               Our Mission
             </h3>
 
-            <div className="w-12 h-[2px] bg-[#D6B643] mb-6" />
+            <div className="w-12 h-[2px] bg-[#D6B643] mb-4 md:mb-6" />
 
-            <p className="text-gray-600 text-base leading-relaxed max-w-xl">
+            <p className="text-gray-600 text-sm sm:text-base leading-relaxed max-w-xl">
               Our mission is to create well-considered interior solutions guided by strong architectural principles and executed with care. By working closely with our clients and following clear processes, quality materials, and refined detailing, we deliver spaces that are enduring, functional, and thoughtfully crafted.
             </p>
           </div>

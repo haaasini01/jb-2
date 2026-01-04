@@ -7,11 +7,11 @@ function Accordion({ question, answer }) {
     <div>
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between gap-8 text-left"
+        className="w-full flex items-center justify-between gap-4 md:gap-8 text-left"
       >
         <span
           className={`
-            text-lg font-medium leading-snug transition-colors
+            text-base sm:text-lg font-medium leading-snug transition-colors
             ${open ? "text-[#D6B643]" : "text-[#1c1c1c]"}
             hover:text-[#D6B643] cursor-pointer
           `}
@@ -21,7 +21,7 @@ function Accordion({ question, answer }) {
 
         <span
           className={`
-            text-2xl font-light transition-transform duration-300
+            text-xl sm:text-2xl font-light transition-transform duration-300
             ${open ? "rotate-45 text-[#D6B643]" : "text-[#1c1c1c]"}
           `}
         >
@@ -35,7 +35,7 @@ function Accordion({ question, answer }) {
           ${open ? "max-h-40 opacity-100 mt-4" : "max-h-0 opacity-0"}
         `}
       >
-        <p className="text-base text-[#1c1c1c]/75 leading-relaxed max-w-3xl">
+        <p className="text-sm sm:text-base text-[#1c1c1c]/75 leading-relaxed max-w-3xl">
           {answer}
         </p>
       </div>

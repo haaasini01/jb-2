@@ -26,8 +26,9 @@ function Description() {
           max-h-[900px]
           flex
           items-start
-          pt-32
-          md:pt-52
+          pt-24
+          md:pt-32
+          lg:pt-52
           overflow-hidden
         "
     >
@@ -47,12 +48,12 @@ function Description() {
           <div className="grid grid-cols-1 items-start text-[#d3d0cb]">
 
             <div className="animate-fade-up">
-              <div className="mb-4 tracking-wide text-8xl font-extrabold">
+              <div className="mb-4 tracking-wide text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-tight">
                 <span>Curated. Timeless. </span>
                 <span className="text-[#D6B643]">Purposeful.</span>
               </div>
 
-              <div className="text-base md:text-xl mb-10 max-w-4xl">
+              <div className="text-sm sm:text-base md:text-xl mb-10 max-w-4xl">
                 Designing interiors that thoughtfully balance functionality,
                 comfort, and character where every space feels intuitive to use,
                 comfortable to live in, and rich with personality.
