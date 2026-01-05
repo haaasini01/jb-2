@@ -31,13 +31,15 @@ function Footer() {
 
                 <div className="text-sm text-[#d3d0cb]/80 space-y-4">
                   <div className="leading-snug">
-                    <p>Jayess Bauences</p>
-                    <p>Interior Designers</p>
-                    <p>Hyderabad, Telangana</p>
+                    <p>8-297, Dargah OU Colony,</p>
+                    <p>Shaikpet, Hyderabad,</p>
+                    <p>Telangana, 500008.</p>
                   </div>
 
-                  <p>+91 9515310196</p>
-                  <p>+91 9515496226</p>
+                  <div className="leading-snug">
+                    <p>+91 9515310196</p>
+                    <p>+91 9515496226</p>
+                  </div>
                   <p>jayessbauences@gmail.com</p>
                 </div>
 
