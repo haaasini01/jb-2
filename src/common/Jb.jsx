@@ -1,4 +1,4 @@
-import logo from "../assets/Jblogo.png";
+import logo from "../assets/JBlogo.png";
 
 function JB() {
   return (
