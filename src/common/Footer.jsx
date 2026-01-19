@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import Container from "../common/Container";
+import JB from "./Jb";
 
 function Footer() {
   return (<div>
@@ -12,8 +13,11 @@ function Footer() {
 
           {/* LEFT : Logo + About */}
           <div className="md:col-span-5">
-            {/* Logo placeholder */}
-            <div className="w-32 md:w-40 h-8 md:h-10 bg-[#d3d0cb]/20 mb-4 md:mb-6" />
+
+            <div className="mb-4 md:mb-6">
+              <JB size="footer" />
+            </div>
+
 
             <p className="text-xs sm:text-sm leading-relaxed text-[#d3d0cb]/80 max-w-md">
               With over 6+ years of experience, we specialize in interior design and development for both residential and commercial spaces, delivering tailored solutions that bring your vision to life.
@@ -40,7 +44,7 @@ function Footer() {
                     <p>+91 9515310196</p>
                     <p>+91 9515496226</p>
                   </div>
-                  <p>jayessbauences@gmail.com</p>
+                  <p>customercare@jayessbauences.com</p>
                 </div>
 
                 {/* Social icons */}
