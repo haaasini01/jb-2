@@ -5,9 +5,7 @@ import { z } from "zod";
 
 const schema = z.object({
   name: z.string().min(1, "Name is required"),
-  phone: z
-    .string()
-    .regex(/^[\+\d\s\-\(\)\.]{6,30}$/, "Invalid phone number"),
+  phone: z.string().regex(/^[\+\d\s\-\(\)\.]{6,30}$/, "Invalid phone number"),
   email: z.string().email("Invalid email address"),
   message: z.string().min(1, "Message is required"),
 });
@@ -15,12 +13,36 @@ const schema = z.object({
 function Form() {
   const sectionRef = useRef(null);
   const [visible, setVisible] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     message: "",
   });
+
+  // Popup state
+  const [toast, setToast] = useState({
+    show: false,
+    type: "success", // "success" | "error"
+    message: "",
+  });
+
+  // Auto-hide popup after 3s
+  useEffect(() => {
+    if (!toast.show) return;
+
+    // only auto-close success toasts
+    if (toast.type !== "success") return;
+
+    const timer = setTimeout(() => {
+      setToast((prev) => ({ ...prev, show: false }));
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [toast.show, toast.type]);
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -36,6 +58,7 @@ function Form() {
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
+
   const handleChange = (e) => {
     setFormData((prev) => ({
       ...prev,
@@ -45,14 +68,24 @@ function Form() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (isSending) return;
+
     const result = schema.safeParse(formData);
     if (!result.success) {
-      alert(result.error.errors[0].message);
+      setToast({
+        show: true,
+        type: "error",
+        message: result.error.errors[0].message,
+      });
       return;
     }
 
     try {
-      const BACKEND_URL = import.meta.env.BACKEND_URL;
+      setIsSending(true);
+
+      const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
       const res = await fetch(`${BACKEND_URL}/user/message`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -67,20 +100,59 @@ function Form() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.message);
 
-      alert("Message sent successfully");
+      setToast({
+        show: true,
+        type: "success",
+        message: "Message sent successfully. Our team will contact you shortly.",
+      });
+
       setFormData({ name: "", email: "", phone: "", message: "" });
     } catch (err) {
-      alert("Error sending message");
       console.error(err);
-      alert(err.message || "Error sending message");
+
+      setToast({
+        show: true,
+        type: "error",
+        message: "Message failed to send. Please email us at customercare@jayessbauences.com",
+      });
+    } finally {
+      setIsSending(false);
     }
   };
 
   return (
-    <section ref={sectionRef} className="bg-[#d3d0cb] py-12 md:py-16">
+    <section ref={sectionRef} className="bg-[#d3d0cb] py-12 md:py-16 relative">
+      {/* Custom Popup */}
+      {toast.show && (
+        <div className="fixed bottom-6 right-6 z-[9999]">
+          <div
+            className={`w-[320px] sm:w-[360px] md:w-[400px]
+              px-6 py-4 rounded-2xl shadow-xl border text-base font-medium 
+              flex items-start justify-between gap-4
+              ${
+                toast.type === "success"
+                  ? "bg-green-50 border-green-300 text-green-800"
+                  : "bg-red-50 border-red-300 text-red-800"
+              }`}
+          >
+            {/* message wraps properly */}
+            <p className="leading-snug break-words whitespace-normal">
+              {toast.message}
+            </p>
+
+            {/* user closes manually */}
+            <button
+              onClick={() => setToast((prev) => ({ ...prev, show: false }))}
+              className="text-2xl leading-none opacity-60 hover:opacity-100"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
+
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-20 items-center">
-
           {/* LEFT : IMAGE */}
           <div
             className={`
@@ -90,7 +162,6 @@ function Form() {
               pointer-events-none
             `}
           >
-
             <div className="relative w-full max-w-lg mx-auto aspect-[4.5/5] overflow-hidden">
               <img
                 src={img1}
@@ -120,7 +191,6 @@ function Form() {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6 max-w-md mx-auto">
-
               <div>
                 <label className="block text-xs tracking-wide text-gray-600 mb-2">
                   FULL NAME
@@ -131,7 +201,7 @@ function Form() {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Your name"
-                  className="w-full bg-transparent focus:bg-transparent autofill:bg-transparent border-b border-gray-500 pb-2 text-sm outline-none"
+                  className="w-full bg-transparent focus:bg-transparent border-b border-gray-500 pb-2 text-sm outline-none"
                 />
               </div>
 
@@ -145,7 +215,7 @@ function Form() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="your@email.com"
-                  className="w-full bg-transparent focus:bg-transparent autofill:bg-transparent border-b border-gray-500 pb-2 text-sm outline-none"
+                  className="w-full bg-transparent focus:bg-transparent border-b border-gray-500 pb-2 text-sm outline-none"
                 />
               </div>
 
@@ -159,7 +229,7 @@ function Form() {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="+91 XXXXX XXXXX"
-                  className="w-full bg-transparent focus:bg-transparent autofill:bg-transparent border-b border-gray-500 pb-2 text-sm outline-none"
+                  className="w-full bg-transparent focus:bg-transparent border-b border-gray-500 pb-2 text-sm outline-none"
                 />
               </div>
 
@@ -173,20 +243,28 @@ function Form() {
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Tell us about your project"
-                  className="w-full bg-transparent focus:bg-transparent autofill:bg-transparent border-b border-gray-500 pb-2 text-sm outline-none"
+                  className="w-full bg-transparent focus:bg-transparent border-b border-gray-500 pb-2 text-sm outline-none"
                 />
               </div>
 
               <button
                 type="submit"
-                className="mt-4 inline-block px-8 py-3 border border-[#1c1c1c] text-xs tracking-widest rounded-lg hover:bg-[#D6B643] hover:border-[#D6B643] hover:text-black cursor-pointer transition-all"
+                disabled={isSending}
+                className={`mt-4 inline-flex items-center justify-center gap-2 px-8 py-3
+                  border text-xs tracking-widest rounded-lg transition-all
+                  ${
+                    isSending
+                      ? "bg-gray-400 border-gray-400 text-black cursor-not-allowed opacity-70"
+                      : "border-[#1c1c1c] hover:bg-[#D6B643] hover:border-[#D6B643] hover:text-black cursor-pointer"
+                  }`}
               >
-                SEND MESSAGE
+                {isSending && (
+                  <span className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin"></span>
+                )}
+                {isSending ? "SENDING..." : "SEND MESSAGE"}
               </button>
-
             </form>
           </div>
-
         </div>
       </Container>
     </section>
